@@ -1,0 +1,227 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== BASE ===== */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  body {
+    @apply font-body text-dark bg-white leading-relaxed;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-bold text-primary leading-tight;
+  }
+
+  a {
+    @apply transition-colors duration-300;
+  }
+
+  img {
+    @apply max-w-full h-auto;
+  }
+
+  ::selection {
+    @apply bg-secondary text-white;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-100;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-secondary/50 rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-secondary;
+  }
+
+  /* Focus styles */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-secondary/50 ring-offset-2;
+  }
+
+  /* Remove number input arrows */
+  input[type='number']::-webkit-inner-spin-button,
+  input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  input[type='number'] {
+    -moz-appearance: textfield;
+  }
+}
+
+/* ===== COMPONENTS ===== */
+@layer components {
+  /* Container */
+  .container-luxe {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Section */
+  .section-padding {
+    @apply py-16 md:py-20 lg:py-24;
+  }
+
+  /* Titles */
+  .section-title {
+    @apply text-3xl md:text-4xl lg:text-[2.75rem] font-heading font-bold text-primary text-center leading-tight;
+  }
+  .section-subtitle {
+    @apply text-gray-500 font-body text-sm md:text-base text-center mt-3 max-w-2xl mx-auto;
+  }
+  .gold-divider {
+    @apply w-16 h-[2px] bg-secondary mx-auto my-4;
+  }
+
+  /* Buttons */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 font-body font-medium
+           transition-all duration-300 rounded-lg
+           focus:outline-none focus:ring-2 focus:ring-offset-2
+           disabled:opacity-50 disabled:cursor-not-allowed
+           active:scale-[0.97];
+  }
+  .btn-primary {
+    @apply btn bg-primary text-white hover:bg-primary-600 focus:ring-primary-300
+           px-6 py-3 text-sm;
+  }
+  .btn-secondary {
+    @apply btn bg-secondary text-white hover:bg-secondary-600 focus:ring-secondary-300
+           px-6 py-3 text-sm;
+  }
+  .btn-outline {
+    @apply btn border-2 border-primary text-primary bg-transparent
+           hover:bg-primary hover:text-white focus:ring-primary-300
+           px-6 py-3 text-sm;
+  }
+  .btn-outline-gold {
+    @apply btn border-2 border-secondary text-secondary bg-transparent
+           hover:bg-secondary hover:text-white focus:ring-secondary-300
+           px-6 py-3 text-sm;
+  }
+  .btn-ghost {
+    @apply btn text-primary hover:bg-primary-50 px-4 py-2 text-sm;
+  }
+  .btn-danger {
+    @apply btn bg-sale text-white hover:bg-red-600 focus:ring-red-300
+           px-6 py-3 text-sm;
+  }
+  .btn-sm {
+    @apply px-4 py-2 text-xs;
+  }
+  .btn-lg {
+    @apply px-8 py-4 text-base;
+  }
+  .btn-icon {
+    @apply w-10 h-10 p-0 rounded-full flex items-center justify-center;
+  }
+
+  /* Inputs */
+  .input-luxe {
+    @apply w-full px-4 py-3 border border-gray-300 rounded-lg
+           font-body text-sm text-dark placeholder-gray-400
+           transition-all duration-300
+           focus:outline-none focus:border-secondary focus:ring-2 focus:ring-secondary/20
+           hover:border-gray-400
+           disabled:bg-gray-100 disabled:cursor-not-allowed;
+  }
+  .label-luxe {
+    @apply block text-sm font-medium text-dark mb-1.5 font-body;
+  }
+  .input-error {
+    @apply border-sale focus:border-sale focus:ring-sale/20;
+  }
+
+  /* Cards */
+  .card-luxe {
+    @apply bg-white rounded-xl shadow-luxe p-6
+           transition-all duration-300 hover:shadow-luxe-lg;
+  }
+
+  /* Badge */
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium font-body;
+  }
+  .badge-sale {
+    @apply badge bg-sale text-white;
+  }
+  .badge-new {
+    @apply badge bg-primary text-white;
+  }
+  .badge-success {
+    @apply badge bg-green-100 text-green-700;
+  }
+  .badge-warning {
+    @apply badge bg-yellow-100 text-yellow-700;
+  }
+  .badge-info {
+    @apply badge bg-blue-100 text-blue-700;
+  }
+
+  /* Link */
+  .link-gold {
+    @apply text-secondary hover:text-secondary-600 font-medium underline-offset-4 hover:underline transition-colors;
+  }
+
+  /* Overlay */
+  .overlay {
+    @apply fixed inset-0 bg-black/50 z-50 transition-opacity duration-300;
+  }
+
+  /* Skeleton shimmer */
+  .skeleton {
+    @apply bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 bg-[length:200%_100%] animate-shimmer rounded;
+  }
+
+  /* Line clamp */
+  .line-clamp-1 { @apply overflow-hidden; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; }
+  .line-clamp-2 { @apply overflow-hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+  .line-clamp-3 { @apply overflow-hidden; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; }
+
+  /* Hide scrollbar */
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+}
+
+/* ===== UTILITIES ===== */
+@layer utilities {
+  .text-gradient-gold {
+    background: linear-gradient(135deg, #C4A35A 0%, #E8D5B7 50%, #C4A35A 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .bg-gradient-luxe {
+    background: linear-gradient(135deg, #1A1A2E 0%, #2D2D4A 100%);
+  }
+  .bg-gradient-gold {
+    background: linear-gradient(135deg, #C4A35A 0%, #DFC59E 100%);
+  }
+  .bg-pattern {
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C4A35A' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  /* Mobile bottom nav spacing */
+  .pb-mobile-nav {
+    @apply pb-20 md:pb-0;
+  }
+  
+  /* Safe area for mobile bottom nav on pages with floating elements */
+  .main-content-mobile {
+    @apply pb-24 md:pb-0;
+  }
+}
